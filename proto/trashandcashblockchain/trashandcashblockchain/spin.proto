@@ -1,0 +1,13 @@
+syntax = "proto3";
+package trashandcashblockchain.trashandcashblockchain;
+
+option go_package = "trashandcash-blockchain/x/trashandcashblockchain/types";
+
+message Spin {
+  uint64 id = 1;
+  string bet = 2; 
+  string address = 3; 
+  string result = 4; 
+  string winning = 5; 
+  
+}

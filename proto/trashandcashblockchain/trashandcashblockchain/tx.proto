@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package trashandcashblockchain.trashandcashblockchain;
+
+option go_package = "trashandcash-blockchain/x/trashandcashblockchain/types";
+
+// Msg defines the Msg service.
+service Msg {
+  rpc BankReplenishment (MsgBankReplenishment) returns (MsgBankReplenishmentResponse);
+  rpc WithdrawBank      (MsgWithdrawBank     ) returns (MsgWithdrawBankResponse     );
+  rpc SpinReels         (MsgSpinReels        ) returns (MsgSpinReelsResponse        );
+}
+message MsgBankReplenishment {
+  string creator = 1;
+  string amount  = 2;
+}
+
+message MsgBankReplenishmentResponse {}
+
+message MsgWithdrawBank {
+  string creator = 1;
+  string amount  = 2;
+}
+
+message MsgWithdrawBankResponse {}
+
+message MsgSpinReels {
+  string creator = 1;
+  string amount  = 2;
+}
+
+message MsgSpinReelsResponse {
+  uint64 id = 1;
+  string bet = 2;
+  string address = 3;
+  string result = 4;
+  string winning = 5;
+}
+
+

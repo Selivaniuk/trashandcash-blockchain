@@ -1,0 +1,62 @@
+syntax = "proto3";
+
+package trashandcashblockchain.trashandcashblockchain;
+
+import "gogoproto/gogo.proto";
+import "google/api/annotations.proto";
+import "cosmos/base/query/v1beta1/pagination.proto";
+import "trashandcashblockchain/trashandcashblockchain/params.proto";
+import "trashandcashblockchain/trashandcashblockchain/spin.proto";
+
+option go_package = "trashandcash-blockchain/x/trashandcashblockchain/types";
+
+// Query defines the gRPC querier service.
+service Query {
+  
+  // Parameters queries the parameters of the module.
+  rpc Params (QueryParamsRequest) returns (QueryParamsResponse) {
+    option (google.api.http).get = "/trashandcash-blockchain/trashandcashblockchain/params";
+  
+  }
+
+  // Queries information about a Spin by its ID.
+  rpc Spin (QueryGetSpinRequest) returns (QueryGetSpinResponse) {
+    option (google.api.http).get = "/axinomix-blockchain/axinomixblockchain/spin/{id}";
+
+  }
+  // Queries a list of Spins.
+  rpc Spins (QuerySpinsRequest) returns (QuerySpinsResponse) {
+    option (google.api.http).get = "/axinomix-blockchain/axinomixblockchain/spins";
+
+  }
+}
+// QueryParamsRequest is request type for the Query/Params RPC method.
+message QueryParamsRequest {}
+
+// QueryParamsResponse is response type for the Query/Params RPC method.
+message QueryParamsResponse {
+  
+  // params holds all the parameters of this module.
+  Params params = 1 [(gogoproto.nullable) = false];
+}
+
+message QueryGetSpinRequest {
+  //id is a unique identifier of the Spin
+  uint64 id = 1;
+}
+
+message QueryGetSpinResponse {
+  Spin Spin = 1 [(gogoproto.nullable) = false];
+}
+
+message QuerySpinsRequest {
+  //address is the account address string.
+  string address = 1;
+  // cosmos.base.query.v1beta1.PageRequest pagination = 2;
+}
+
+message QuerySpinsResponse {
+  repeated Spin                                   Spin       = 1 [(gogoproto.nullable) = false];
+  //  cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+

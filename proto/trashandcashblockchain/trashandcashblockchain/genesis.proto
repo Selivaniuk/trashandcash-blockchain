@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package trashandcashblockchain.trashandcashblockchain;
+
+import "gogoproto/gogo.proto";
+import "trashandcashblockchain/trashandcashblockchain/params.proto";
+import "trashandcashblockchain/trashandcashblockchain/spin.proto";
+
+option go_package = "trashandcash-blockchain/x/trashandcashblockchain/types";
+
+// GenesisState defines the trashandcashblockchain module's genesis state.
+message GenesisState {
+           Params params    = 1 [(gogoproto.nullable) = false];
+  repeated Spin   spinList  = 2 [(gogoproto.nullable) = false];
+           uint64 spinCount = 3;
+}
+

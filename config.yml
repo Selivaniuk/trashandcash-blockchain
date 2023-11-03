@@ -1,21 +1,56 @@
 version: 1
 accounts:
-- name: alice
-  coins:
-  - 20000token
-  - 200000000stake
-- name: bob
-  coins:
-  - 10000token
-  - 100000000stake
+  - name: alice
+    coins:
+      - 1000000000trash
+  - name: bob
+    coins:
+      - 10000trash
 client:
+  typescript:
+    path: ts-client
+  hooks:
+    path: react/src/hooks
   openapi:
     path: docs/static/openapi.yml
-faucet:
-  name: bob
-  coins:
-  - 5token
-  - 100000stake
 validators:
-- name: alice
-  bonded: 100000000stake
+  - name: alice
+    bonded: 100000000trash
+    app:
+      api:
+        address: ":1319"
+      grpc:
+        address: ":9094"
+      grpc-web:
+        address: ":9095"
+    config:
+      p2p:
+        laddr: ":26662"
+      rpc:
+        laddr: ":26663"
+        pprof_laddr: ":6062"
+
+genesis:
+  app_state:
+    staking:
+      params:
+        bond_denom: trash
+    bank:
+      denom_metadata:
+        - name: trash
+          symbol: TRASH
+          description: The native staking token of the Trash And Cash Network.
+          denom_units:
+            - denom: utrash
+              exponent: 0
+              aliases:
+                - microtrash
+            - denom: mtrash
+              exponent: 3
+              aliases:
+                - millitrash
+            - denom: trash
+              exponent: 6
+          base: utrash
+          display: trash
+

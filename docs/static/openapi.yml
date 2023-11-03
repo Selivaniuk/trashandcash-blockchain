@@ -46437,6 +46437,149 @@ paths:
                         }
       tags:
         - Query
+  /axinomix-blockchain/axinomixblockchain/spin/{id}:
+    get:
+      summary: Queries information about a Spin by its ID.
+      operationId: TrashandcashblockchainTrashandcashblockchainSpin
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+            properties:
+              Spin:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    format: uint64
+                  bet:
+                    type: string
+                  address:
+                    type: string
+                  result:
+                    type: string
+                  winning:
+                    type: string
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    '@type':
+                      type: string
+                  additionalProperties: {}
+      parameters:
+        - name: id
+          description: id is a unique identifier of the Spin
+          in: path
+          required: true
+          type: string
+          format: uint64
+      tags:
+        - Query
+  /axinomix-blockchain/axinomixblockchain/spins:
+    get:
+      summary: Queries a list of Spins.
+      operationId: TrashandcashblockchainTrashandcashblockchainSpins
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+            properties:
+              Spin:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                      format: uint64
+                    bet:
+                      type: string
+                    address:
+                      type: string
+                    result:
+                      type: string
+                    winning:
+                      type: string
+                title: cosmos.base.query.v1beta1.PageResponse pagination = 2;
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    '@type':
+                      type: string
+                  additionalProperties: {}
+      parameters:
+        - name: address
+          description: |-
+            address is the account address string.
+
+            cosmos.base.query.v1beta1.PageRequest pagination = 2;
+          in: query
+          required: false
+          type: string
+      tags:
+        - Query
+  /trashandcash-blockchain/trashandcashblockchain/params:
+    get:
+      summary: Parameters queries the parameters of the module.
+      operationId: TrashandcashblockchainTrashandcashblockchainParams
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+            properties:
+              params:
+                description: params holds all the parameters of this module.
+                type: object
+            description: >-
+              QueryParamsResponse is response type for the Query/Params RPC
+              method.
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    '@type':
+                      type: string
+                  additionalProperties: {}
+      tags:
+        - Query
 definitions:
   cosmos.auth.v1beta1.AddressBytesToStringResponse:
     type: object
@@ -75176,3 +75319,82 @@ definitions:
     description: |-
       Version defines the versioning scheme used to negotiate the IBC verison in
       the connection handshake.
+  trashandcashblockchain.trashandcashblockchain.MsgBankReplenishmentResponse:
+    type: object
+  trashandcashblockchain.trashandcashblockchain.MsgSpinReelsResponse:
+    type: object
+    properties:
+      id:
+        type: string
+        format: uint64
+      bet:
+        type: string
+      address:
+        type: string
+      result:
+        type: string
+      winning:
+        type: string
+  trashandcashblockchain.trashandcashblockchain.MsgWithdrawBankResponse:
+    type: object
+  trashandcashblockchain.trashandcashblockchain.Params:
+    type: object
+    description: Params defines the parameters for the module.
+  trashandcashblockchain.trashandcashblockchain.QueryGetSpinResponse:
+    type: object
+    properties:
+      Spin:
+        type: object
+        properties:
+          id:
+            type: string
+            format: uint64
+          bet:
+            type: string
+          address:
+            type: string
+          result:
+            type: string
+          winning:
+            type: string
+  trashandcashblockchain.trashandcashblockchain.QueryParamsResponse:
+    type: object
+    properties:
+      params:
+        description: params holds all the parameters of this module.
+        type: object
+    description: QueryParamsResponse is response type for the Query/Params RPC method.
+  trashandcashblockchain.trashandcashblockchain.QuerySpinsResponse:
+    type: object
+    properties:
+      Spin:
+        type: array
+        items:
+          type: object
+          properties:
+            id:
+              type: string
+              format: uint64
+            bet:
+              type: string
+            address:
+              type: string
+            result:
+              type: string
+            winning:
+              type: string
+        title: cosmos.base.query.v1beta1.PageResponse pagination = 2;
+  trashandcashblockchain.trashandcashblockchain.Spin:
+    type: object
+    properties:
+      id:
+        type: string
+        format: uint64
+      bet:
+        type: string
+      address:
+        type: string
+      result:
+        type: string
+      winning:
+        type: string
